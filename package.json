@@ -3,14 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.6",
+    "d3": "^5.0.0",
+    "prop-types": "^15.5.10",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-redux": "^5.0.6",
+    "react-router": "^3.0.2",
+    "react-scripts": "1.1.4",
+    "recursive-readdir": "^2.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "mini-css-extract-plugin": "^0.4.0",
+    "style-loader": "^0.19.1",
+    "babel-plugin-react-css-modules": "^3.4.2",
+    "postcss": "^6.0.22",
+    "postcss-advanced-variables": "^2.3.3",
+    "postcss-custom-properties": "^7.0.0",
+    "postcss-discard-duplicates": "^2.1.0",
+    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-preset-env": "^5.1.0",
+    "postcss-remove-root": "0.0.2",
+    "precss": "^3.1.2"
   }
 }
