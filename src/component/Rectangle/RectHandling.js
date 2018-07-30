@@ -72,42 +72,45 @@ function isNear(i, j) {
 
 export default class RectHandling extends React.Component {
 
-  static defaultProps = {
-    value: [],
-    onAddSelection: f => f,
-    onRemoveSelection: f => f,
-    onRectHover: f => f,
-    onRectHoverOut: f => f,
-    onDiscardSelection: f => f,
-    coordinates: { x: 0, y: 0, height: 0, width: 0 },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      addSelection: false,
+      removeSelection: false,
+      activeButton: '',
+      height: 159,
+      width: 350,
+      rectanglesList: this.props.value,
+      rectSelected: false,
+    };
+  }
 
-  static propTypes = {
-    value: PropTypes.arrayOf(PropTypes.shape({
-      x: PropTypes.number,
-      y: PropTypes.number,
-      width: PropTypes.number,
-      height: PropTypes.number,
-    })),
-    coordinates: PropTypes.object,
-    onAddSelection: PropTypes.func,
-    onRemoveSelection: PropTypes.func,
-    onDiscardSelection: PropTypes.func,
-    onRectHover: PropTypes.func,
-    onRectHoverOut: PropTypes.func,
-  };
+  componentDidMount() {
+    this.dragRectangleHandler();
+    this.onResizeHandler();
+    this.svgMouseListener();
+    this.selectRect();
+  }
 
-  state = {
-    addSelection: false,
-    removeSelection: false,
-    activeButton: '',
-    height: 159,
-    width: 350,
-    rectanglesList: this.props.value,
-    rectSelected: false,
-  };
+  componentDidUpdate() {
+    this.dragRectangleHandler();
+    this.onResizeHandler();
+    this.svgMouseListener();
+    this.selectRect();
+  }
 
-  onRemoveSelection = async function () {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.coordinates !== this.props.coordinates){
+      this.forHighlighting(nextProps.coordinates);
+    }
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        rectanglesList: Object.assign([], nextProps.value),
+      });
+    }
+  }
+
+  onRemoveSelection = async () => {
     const cancelRef = d3.select(this.cancelRef);
     const targetId = Number(cancelRef.attr('data-ref-id') || 0);
     const shouldRemove = await this.props.onRemoveSelection(targetId,
@@ -121,7 +124,7 @@ export default class RectHandling extends React.Component {
       .style('visibility', 'hidden');
   };
 
-  onAddSelection = async function () {
+  onAddSelection = async () => {
     const rect = d3.select(this.rectRef);
     const x = parseInt(rect.attr('x'));
     const y = parseInt(rect.attr('y'));
@@ -163,55 +166,7 @@ export default class RectHandling extends React.Component {
     });
   };
 
-  constructor(props) {
-    super(props);
-    this.dragRectangleHandler = this.dragRectangleHandler.bind(this);
-    this.onResizeHandler = this.onResizeHandler.bind(this);
-    this.drawSelector = this.drawSelector.bind(this);
-    this.stockCircle = this.stockCircle.bind(this);
-    this.svgMouseListener = this.svgMouseListener.bind(this);
-    this.selectRect = this.selectRect.bind(this);
-    this.positionTickMark = this.positionTickMark.bind(this);
-    this.tickMarkOutside = this.tickMarkOutside.bind(this);
-    this.buttonExists = this.buttonExists.bind(this);
-    this.handleCancelButton = this.handleCancelButton.bind(this);
-    this.getCurrentSelections = this.getCurrentSelections.bind(this);
-    this.onRemoveSelection = this.onRemoveSelection.bind(this);
-    this.onAddSelection = this.onAddSelection.bind(this);
-    this.rectReset = this.rectReset.bind(this);
-    this.forHighlighting = this.forHighlighting.bind(this);
-  }
-
-  componentDidMount() {
-    this.dragRectangleHandler();
-    this.onResizeHandler();
-    this.svgMouseListener();
-    this.selectRect();
-    this.getCurrentSelections();
-  }
-
-  componentDidUpdate() {
-    this.dragRectangleHandler();
-    this.onResizeHandler();
-    this.svgMouseListener();
-    this.selectRect();
-    this.getCurrentSelections();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.coordinates !== this.props.coordinates) this.forHighlighting(nextProps.coordinates);
-    if (this.props.value !== nextProps.value) {
-      this.setState({
-        rectanglesList: Object.assign([], nextProps.value),
-      });
-    }
-  }
-
-  getCurrentSelections() {
-    const self = this;
-  }
-
-  svgMouseListener() {
+  svgMouseListener = () => {
     const circle = d3.select(this.circleRef);
     const rect = d3.select(this.rectRef);
     const tickRef = d3.select(this.tickRef);
@@ -241,9 +196,9 @@ export default class RectHandling extends React.Component {
         if (draw) self.drawSelector(rect, d3.mouse(this));
         self.stockCircle(rect, circle, d3.mouse(this));
       });
-  }
+  };
 
-  handleCancelButton() {
+  handleCancelButton = () => {
     const cancelRef = d3.select(this.cancelRef);
     const self = this;
     let flagValue = false;
@@ -260,7 +215,7 @@ export default class RectHandling extends React.Component {
       .style('visibility', 'hidden');
   }
 
-  selectRect() {
+  selectRect = () => {
     const rect = d3.select(this.rectRef);
     const tickRef = d3.select(this.tickRef);
     const self = this;
@@ -272,9 +227,9 @@ export default class RectHandling extends React.Component {
       .on('mouseout', function () {
         self.tickMarkOutside(tickRef);
       });
-  }
+  };
 
-  tickMarkOutside(tickRef) {
+  tickMarkOutside = (tickRef) => {
     const self = this;
     let tickFlag = false;
 
@@ -288,15 +243,15 @@ export default class RectHandling extends React.Component {
         tickFlag = false;
         self.buttonExists(tickRef, tickFlag);
       });
-  }
+  };
 
-  buttonExists(buttonRef, tickFlag) {
+  buttonExists = (buttonRef, tickFlag) => {
     buttonRef
       .style('visibility', tickFlag ? 'visible' : 'hidden')
       .style('cursor', 'pointer');
-  }
+  };
 
-  positionTickMark(rect, tickRef) {
+  positionTickMark = (rect, tickRef) => {
     const x1 = parseInt(rect.attr('x'));
     const y1 = parseInt(rect.attr('y'));
     const width = parseInt(rect.attr('width'));
@@ -307,9 +262,9 @@ export default class RectHandling extends React.Component {
       .attr('x', x1 + width - imgWidth)
       .attr('y', y1)
       .style('visibility', 'visible');
-  }
+  };
 
-  stockCircle(rect, circle, [x, y]) {
+  stockCircle = (rect, circle, [x, y])=> {
     const x1 = parseInt(rect.attr('x'));
     const y1 = parseInt(rect.attr('y'));
     const height = parseInt(rect.attr('height'));
@@ -326,9 +281,9 @@ export default class RectHandling extends React.Component {
       .attr('cx', cx)
       .attr('cy', cy)
       .attr('cursor', cursor[cursorType]);
-  }
+  };
 
-  drawSelector(rect, [x1, y1]) {
+  drawSelector = (rect, [x1, y1]) => {
     const tickRef = d3.select(this.tickRef);
     const self = this;
 
@@ -336,9 +291,9 @@ export default class RectHandling extends React.Component {
       .attr('width', Math.max(0, x1 - +rect.attr('x')))
       .attr('height', Math.max(0, y1 - +rect.attr('y')));
     self.buttonExists(tickRef, false);
-  }
+  };
 
-  onResizeHandler() {
+  onResizeHandler = () => {
     const self = this;
     let originalHeight = 0;
     let originalWidth = 0;
@@ -432,9 +387,9 @@ export default class RectHandling extends React.Component {
             .attr('x', Math.max(Math.min(left, maxX), minX));
         }),
       );
-  }
+  };
 
-  dragRectangleHandler() {
+  dragRectangleHandler = () => {
     let startX = 0, startY = 0;
     let w1 = 0, h1 = 0;
     let x = 0, y = 0;
@@ -469,9 +424,9 @@ export default class RectHandling extends React.Component {
             .attr('y', yValue);
         }),
     );
-  }
+  };
 
-  rectReset(x = 0, y = 0) {
+  rectReset = (x = 0, y = 0) => {
     const rect = d3.select(this.rectRef);
     rect
       .attr('x', x)
@@ -479,16 +434,16 @@ export default class RectHandling extends React.Component {
       .attr('height', 0)
       .attr('width', 0)
       .attr('updateForId', '');
-  }
+  };
 
-  forHighlighting(coordinates) {
+  forHighlighting = (coordinates) => {
     if (coordinates && coordinates.width !== 0 && coordinates.height !== 0) {
       this.setState({
         rectSelected: true,
         coordinates,
       });
     }
-  }
+  };
 
   render() {
     const { onRectHover, onRectHoverOut, onDiscardSelection } = this.props;
@@ -659,3 +614,28 @@ export default class RectHandling extends React.Component {
     );
   }
 }
+
+RectHandling.defaultProps = {
+  value: [],
+  onAddSelection: f => f,
+  onRemoveSelection: f => f,
+  onRectHover: f => f,
+  onRectHoverOut: f => f,
+  onDiscardSelection: f => f,
+  coordinates: { x: 0, y: 0, height: 0, width: 0 },
+};
+
+RectHandling.propTypes = {
+  value: PropTypes.arrayOf(PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
+  })),
+  coordinates: PropTypes.object,
+  onAddSelection: PropTypes.func,
+  onRemoveSelection: PropTypes.func,
+  onDiscardSelection: PropTypes.func,
+  onRectHover: PropTypes.func,
+  onRectHoverOut: PropTypes.func,
+};

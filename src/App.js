@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// import RectComp from './component/Rectangle/Rect'
 import RectHandling from './component/Rectangle/RectHandling';
 
 class App extends Component {
@@ -8,9 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         Drawing Rect
-        <RectHandling
-        />
-        {/*<RectComp />*/}
+        <RectHandling />
       </div>
     );
   }
