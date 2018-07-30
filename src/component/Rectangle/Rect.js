@@ -16,6 +16,29 @@ const cursor = {
   _bottom: 'ns-resize',
 };
 
+const pannelIcons = [
+  {
+    id: 1,
+    button: '+',
+    desc: 'Create rectangle'
+  },
+  {
+    id: 2,
+    button: '-',
+    desc: 'Remove rectangle'
+  },
+  {
+    id: 3,
+    button: 'M',
+    desc: 'Merge rectangles'
+  },
+  {
+    id: 4,
+    button: 'S',
+    desc: 'Split rectangles'
+  }
+];
+
 function findPositionOnRect({ x, y, x1, y1, height, width }) {
   let cursorType = '';
   if (isNear(y, y1)) {
@@ -411,6 +434,11 @@ export default class extends React.Component {
           height: this.props.height,
         }}
       >
+        <div className={"panel"}>
+          <button className={"panelButton"}>
+            +
+          </button>
+        </div>
         <svg
           ref={node => {
             this.svgRef = node;
@@ -484,7 +512,7 @@ export default class extends React.Component {
             data-id="top-left"
             cy="110"
             cx="10"
-            r="5"
+            r="1"
             className={'circle'}
           />
 
