@@ -1,0 +1,119 @@
+
+.draggableRectangle {
+  fill: rgba(40, 40, 68, 0.15);
+  stroke: rgb(232, 11, 11);
+  stroke-dasharray: 5 5;
+}
+
+.rectangles {
+  fill: rgba(0, 255, 0, 0);
+}
+
+.circle {
+  fill: rgba(0, 255, 0, 0);
+}
+
+.tickImage:hover,
+.cancelImage:hover {
+  cursor: pointer;
+  visibility: visible;
+}
+
+.draggableRectangle:hover {
+  cursor: move;
+}
+
+.tickImage {
+  visibility: hidden;
+}
+
+.cancelImage {
+  visibility: hidden;
+}
+
+.svg {
+  padding: 0 15px 10px;
+}
+
+.imagepatchWrapper {
+
+}
+
+/*panel styles starts here*/
+.panel {
+  width: 50px;
+  height: 400px;
+  background: #cec2c2;
+  position: fixed;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.panelButton {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  border: none;
+}
+
+.active, .panelButton:hover {
+  background: #55ceb7;
+  color: white;
+}
+
+.panelButton:hover {
+  cursor: pointer;
+  background: #55ceb7;
+}
+
+.panelButton:last-child {
+  margin-bottom: 0;
+}
+
+.tooltipText {
+
+}
+
+.panelItem {
+  position: relative;
+  display: inline-block;
+}
+
+.panelItem .tooltipText {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -30px;
+  left: 0px;
+  font-size: 11px;
+}
+
+.panelItem:hover .tooltipText {
+  visibility: visible;
+}
+
+.panelItem:hover .tooltipText:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 30%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.active {
+
+}
+
