@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53d8f75b-abdc-4a50-af88-2fe5d8a6bcb8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Rectangle/Rect.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Rectangle/Rect.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/Rectangle/RectHandling.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Rectangle/RectHandling.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,23 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RectHandling.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RectHandling.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/Rectangle/RectHandling.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7480">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="211">
+              <caret line="100" column="40" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#251#464#0" />
@@ -48,22 +32,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RectHandling.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/component/Rectangle/RectHandling.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="62" column="21" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>svg</find>
-      <find>imagepatchWrapper</find>
-      <find>height</find>
       <find>value</find>
       <find>imageHref</find>
       <find>map</find>
@@ -74,7 +46,6 @@
       <find>removeSelection</find>
       <find>xSmall</find>
       <find>selectedRect</find>
-      <find>panelButton</find>
       <find>blue</find>
       <find>svgMouseListener</find>
       <find>dragRectangleHandler</find>
@@ -83,14 +54,18 @@
       <find>tickMarkOutside</find>
       <find>handleCancelButton</find>
       <find>rectReset</find>
-      <find>onAddSelection</find>
       <find>buttonExists</find>
       <find>positionTickMark</find>
       <find>drawSelector</find>
       <find>stockCircle</find>
       <find>onRemoveSelection</find>
-      <find>forHighlighting</find>
+      <find>panelButton</find>
       <find>getCurrentSelections</find>
+      <find>panelIcons</find>
+      <find>onAddSelection</find>
+      <find>activeButton</find>
+      <find>rectSelected</find>
+      <find>forHighlighting</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -114,8 +89,8 @@
         <option value="$PROJECT_DIR$/src/component/Rectangle/RectHandling.css" />
         <option value="$PROJECT_DIR$/src/component/Rectangle/Rect.css" />
         <option value="$PROJECT_DIR$/src/component/Rectangle/Rect.js" />
-        <option value="$PROJECT_DIR$/src/component/Rectangle/RectHandling.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/component/Rectangle/RectHandling.js" />
       </list>
     </option>
   </component>
@@ -221,13 +196,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24541000" />
+    <option name="totallyTimeSpent" value="25999000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1987315" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1987315" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -274,21 +249,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13591" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -612,25 +572,6 @@
         <state relative-caret-position="-13591" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -659,16 +600,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/Rectangle/RectHandling.js">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7480">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        <state>
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#251#464#0" />
-            <element signature="e#486#824#0" />
-            <element signature="n#!!block;n#findPositionOnRect#0" />
-            <element signature="n#!!block;n#isNear#0" />
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,6 +628,23 @@
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/registerServiceWorker.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/Rectangle/RectHandling.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="100" column="40" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#251#464#0" />
+            <element signature="e#486#824#0" />
+            <element signature="n#!!block;n#findPositionOnRect#0" />
+            <element signature="n#!!block;n#isNear#0" />
           </folding>
         </state>
       </provider>

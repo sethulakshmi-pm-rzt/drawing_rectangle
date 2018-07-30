@@ -81,7 +81,6 @@ export default class RectHandling extends React.Component {
       height: 159,
       width: 350,
       rectanglesList: this.props.value,
-      rectSelected: false,
     };
   }
 
@@ -100,9 +99,6 @@ export default class RectHandling extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.coordinates !== this.props.coordinates){
-      this.forHighlighting(nextProps.coordinates);
-    }
     if (this.props.value !== nextProps.value) {
       this.setState({
         rectanglesList: Object.assign([], nextProps.value),
@@ -436,19 +432,10 @@ export default class RectHandling extends React.Component {
       .attr('updateForId', '');
   };
 
-  forHighlighting = (coordinates) => {
-    if (coordinates && coordinates.width !== 0 && coordinates.height !== 0) {
-      this.setState({
-        rectSelected: true,
-        coordinates,
-      });
-    }
-  };
-
   render() {
-    const { onRectHover, onRectHoverOut, onDiscardSelection } = this.props;
+    const { onRectHover, onRectHoverOut } = this.props;
 
-    const { width, height, rectanglesList, rectSelected, coordinates } = this.state;
+    const { width, height, rectanglesList, coordinates } = this.state;
 
     const self = this;
     let d = '';
@@ -507,7 +494,6 @@ export default class RectHandling extends React.Component {
                       activeButton: item.button,
                     })
                   }
-                  console.log('Clickk', item.id, item.button);
                 }}
               >
                 {item.button}
