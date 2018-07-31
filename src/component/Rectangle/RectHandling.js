@@ -72,6 +72,40 @@ function isNear(i, j) {
 
 export default class RectHandling extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      addSelection: false,
+      removeSelection: false,
+      activeButton: '',
+      height: 159,
+      width: 350,
+      rectanglesList: this.props.value,
+    };
+  }
+
+  componentDidMount() {
+    this.dragRectangleHandler();
+    this.onResizeHandler();
+    this.svgMouseListener();
+    this.selectRect();
+  }
+
+  componentDidUpdate() {
+    this.dragRectangleHandler();
+    this.onResizeHandler();
+    this.svgMouseListener();
+    this.selectRect();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        rectanglesList: Object.assign([], nextProps.value),
+      });
+    }
+  }
+
   onRemoveSelection = async () => {
     const cancelRef = d3.select(this.cancelRef);
     const targetId = Number(cancelRef.attr('data-ref-id') || 0);
@@ -82,6 +116,7 @@ export default class RectHandling extends React.Component {
     this.setState({
       rectanglesList: this.state.rectanglesList.filter(({ id }) => id !== targetId),
     });
+
     cancelRef
       .style('visibility', 'hidden');
   };
@@ -139,8 +174,12 @@ export default class RectHandling extends React.Component {
 
     d3.select(this.svgRef)
       .on('mouseup', function () {
+        if(draw) {
+          console.log("Drawinggg");
+          self.buttonExists(tickRef, false);
+
+        }
         draw = false;
-        self.buttonExists(tickRef, false);
       })
       .on('mousedown', function () {
         if (addSelection) draw = true;
@@ -397,40 +436,6 @@ export default class RectHandling extends React.Component {
       .attr('width', 0)
       .attr('updateForId', '');
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      addSelection: false,
-      removeSelection: false,
-      activeButton: '',
-      height: 159,
-      width: 350,
-      rectanglesList: this.props.value,
-    };
-  }
-
-  componentDidMount() {
-    this.dragRectangleHandler();
-    this.onResizeHandler();
-    this.svgMouseListener();
-    this.selectRect();
-  }
-
-  componentDidUpdate() {
-    this.dragRectangleHandler();
-    this.onResizeHandler();
-    this.svgMouseListener();
-    this.selectRect();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.value !== nextProps.value) {
-      this.setState({
-        rectanglesList: Object.assign([], nextProps.value),
-      });
-    }
-  }
 
   render() {
 

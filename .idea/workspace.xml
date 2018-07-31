@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53d8f75b-abdc-4a50-af88-2fe5d8a6bcb8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/Rectangle/RectHandling.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Rectangle/RectHandling.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,12 +19,14 @@
       <file leaf-file-name="RectHandling.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/Rectangle/RectHandling.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="452" column="25" selection-start-line="452" selection-start-column="20" selection-end-line="452" selection-end-column="25" />
+            <state relative-caret-position="576">
+              <caret line="587" column="12" lean-forward="true" selection-start-line="580" selection-start-column="10" selection-end-line="587" selection-end-column="12" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#251#464#0" />
                 <element signature="e#486#824#0" />
+                <element signature="n#!!block;n#findPositionOnRect#0" />
+                <element signature="n#!!block;n#isNear#0" />
               </folding>
             </state>
           </provider>
@@ -44,9 +45,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rectReset</find>
-      <find>buttonExists</find>
-      <find>positionTickMark</find>
       <find>stockCircle</find>
       <find>panelButton</find>
       <find>getCurrentSelections</find>
@@ -64,9 +62,7 @@
       <find>coordinate</find>
       <find>findPositionOnRect</find>
       <find>10</find>
-      <find>drawSelector</find>
       <find>handleCancelButton</find>
-      <find>tickRef</find>
       <find>onRectHover</find>
       <find>onRectHoverOut</find>
       <find>onAddSelection</find>
@@ -74,6 +70,11 @@
       <find>onDiscardSelection</find>
       <find>cx</find>
       <find>conso</find>
+      <find>addSelection</find>
+      <find>positionTickMark</find>
+      <find>tickRef</find>
+      <find>drawSelector</find>
+      <find>rectanglesList</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -204,7 +205,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30060000" />
+    <option name="totallyTimeSpent" value="31533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -312,6 +313,8 @@
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#251#464#0" />
             <element signature="e#486#824#0" />
+            <element signature="n#!!block;n#findPositionOnRect#0" />
+            <element signature="n#!!block;n#isNear#0" />
           </folding>
         </state>
       </provider>
@@ -421,6 +424,8 @@
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#251#464#0" />
             <element signature="e#486#824#0" />
+            <element signature="n#!!block;n#findPositionOnRect#0" />
+            <element signature="n#!!block;n#isNear#0" />
           </folding>
         </state>
       </provider>
@@ -530,6 +535,8 @@
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#251#464#0" />
             <element signature="e#486#824#0" />
+            <element signature="n#!!block;n#findPositionOnRect#0" />
+            <element signature="n#!!block;n#isNear#0" />
           </folding>
         </state>
       </provider>
@@ -639,12 +646,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/Rectangle/RectHandling.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="452" column="25" selection-start-line="452" selection-start-column="20" selection-end-line="452" selection-end-column="25" />
+        <state relative-caret-position="576">
+          <caret line="587" column="12" lean-forward="true" selection-start-line="580" selection-start-column="10" selection-end-line="587" selection-end-column="12" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#251#464#0" />
             <element signature="e#486#824#0" />
+            <element signature="n#!!block;n#findPositionOnRect#0" />
+            <element signature="n#!!block;n#isNear#0" />
           </folding>
         </state>
       </provider>
