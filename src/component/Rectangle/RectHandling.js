@@ -67,44 +67,10 @@ function findPositionOnRect({ x, y, x1, y1, height, width }) {
 }
 
 function isNear(i, j) {
-  return Math.abs(i - j) < 5;
+  return Math.abs(i - j) < 1;
 }
 
 export default class RectHandling extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      addSelection: false,
-      removeSelection: false,
-      activeButton: '',
-      height: 159,
-      width: 350,
-      rectanglesList: this.props.value,
-    };
-  }
-
-  componentDidMount() {
-    this.dragRectangleHandler();
-    this.onResizeHandler();
-    this.svgMouseListener();
-    this.selectRect();
-  }
-
-  componentDidUpdate() {
-    this.dragRectangleHandler();
-    this.onResizeHandler();
-    this.svgMouseListener();
-    this.selectRect();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.value !== nextProps.value) {
-      this.setState({
-        rectanglesList: Object.assign([], nextProps.value),
-      });
-    }
-  }
 
   onRemoveSelection = async () => {
     const cancelRef = d3.select(this.cancelRef);
@@ -209,7 +175,7 @@ export default class RectHandling extends React.Component {
         self.buttonExists(cancelRef, flagValue);
       })
       .style('visibility', 'hidden');
-  }
+  };
 
   selectRect = () => {
     const rect = d3.select(this.rectRef);
@@ -251,7 +217,7 @@ export default class RectHandling extends React.Component {
     const x1 = parseInt(rect.attr('x'));
     const y1 = parseInt(rect.attr('y'));
     const width = parseInt(rect.attr('width'));
-    let imgWidth = Math.max(10, (this.state.width * this.state.height * 0.00001));
+    let imgWidth = Math.min(10, (this.state.width * this.state.height * 0.0001));
 
     tickRef
       .attr('width', imgWidth)
@@ -260,7 +226,7 @@ export default class RectHandling extends React.Component {
       .style('visibility', 'visible');
   };
 
-  stockCircle = (rect, circle, [x, y])=> {
+  stockCircle = (rect, circle, [x, y]) => {
     const x1 = parseInt(rect.attr('x'));
     const y1 = parseInt(rect.attr('y'));
     const height = parseInt(rect.attr('height'));
@@ -432,20 +398,43 @@ export default class RectHandling extends React.Component {
       .attr('updateForId', '');
   };
 
-  render() {
-    const { onRectHover, onRectHoverOut } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      addSelection: false,
+      removeSelection: false,
+      activeButton: '',
+      height: 159,
+      width: 350,
+      rectanglesList: this.props.value,
+    };
+  }
 
-    const { width, height, rectanglesList, coordinates } = this.state;
+  componentDidMount() {
+    this.dragRectangleHandler();
+    this.onResizeHandler();
+    this.svgMouseListener();
+    this.selectRect();
+  }
 
-    const self = this;
-    let d = '';
-    if (coordinates && (Object.keys(coordinates).length) > 0) {
-      d = 'M0 0 L' + width + ' 0 L' + width + ' ' + height + ' ' + 'L0 ' + height + 'z ' +
-        'M' + coordinates.x + ' ' + coordinates.y + ' L' +
-        (parseInt(coordinates.x) + parseInt(coordinates.width)) + ' ' + coordinates.y + ' L' +
-        (parseInt(coordinates.x) + parseInt(coordinates.width)) + ' ' + (parseInt(coordinates.y) + parseInt(coordinates.height)) + ' L' +
-        coordinates.x + ' ' + (parseInt(coordinates.y) + parseInt(coordinates.height)) + ' z';
+  componentDidUpdate() {
+    this.dragRectangleHandler();
+    this.onResizeHandler();
+    this.svgMouseListener();
+    this.selectRect();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({
+        rectanglesList: Object.assign([], nextProps.value),
+      });
     }
+  }
+
+  render() {
+
+    const { width, height, rectanglesList } = this.state;
 
     return (
       <div className={'imagepatchWrapper'}>
@@ -460,39 +449,39 @@ export default class RectHandling extends React.Component {
                 className={`panelButton ${this.state.activeButton === item.button ? 'active' : ''}`}
 
                 onClick={() => {
-                  if(item.id === 1 && item.button === '+') {
-                    console.log("add", item.id, item.button);
+                  if (item.id === 1 && item.button === '+') {
+                    console.log('add', item.id, item.button);
                     this.setState({
                       activeButton: item.button,
                       addSelection: true,
                       removeSelection: false,
-                    })
+                    });
                   }
-                  if(item.id === 2 && item.button === '-') {
-                    console.log("remove", item.id, item.button);
+                  if (item.id === 2 && item.button === '-') {
+                    console.log('remove', item.id, item.button);
                     this.setState({
                       activeButton: item.button,
                       removeSelection: true,
                       addSelection: false,
-                    })
+                    });
                   }
-                  if(item.id === 3 && item.button === 'M') {
-                    console.log("Merge", item.id, item.button);
+                  if (item.id === 3 && item.button === 'M') {
+                    console.log('Merge', item.id, item.button);
                     this.setState({
                       activeButton: item.button,
-                    })
+                    });
                   }
-                  if(item.id === 4 && item.button === 'S') {
-                    console.log("Split", item.id, item.button);
+                  if (item.id === 4 && item.button === 'S') {
+                    console.log('Split', item.id, item.button);
                     this.setState({
                       activeButton: item.button,
-                    })
+                    });
                   }
-                  if(item.id === 5 && item.button === 'R') {
-                    console.log("Resize", item.id, item.button);
+                  if (item.id === 5 && item.button === 'R') {
+                    console.log('Resize', item.id, item.button);
                     this.setState({
                       activeButton: item.button,
-                    })
+                    });
                   }
                 }}
               >
@@ -535,9 +524,8 @@ export default class RectHandling extends React.Component {
 
               }}
               onMouseOver={async (e) => {
-                let imgWidth = Math.max(10, (this.state.width * this.state.height * 0.00001));
+                let imgWidth = Math.min(10, (this.state.width * this.state.height * 0.0001));
                 const cancelRef = d3.select(this.cancelRef);
-                await onRectHover(e, item);
                 if (this.state.removeSelection) {
                   cancelRef
                     .attr('width', imgWidth)
@@ -547,8 +535,7 @@ export default class RectHandling extends React.Component {
                     .attr('data-ref-id', item.id);
                 }
               }}
-              onMouseOut={(e) => {
-                onRectHoverOut(e, item);
+              onMouseOut={() => {
                 this.handleCancelButton();
               }}
             />))
@@ -573,7 +560,7 @@ export default class RectHandling extends React.Component {
             data-id="top-left"
             cy="110"
             cx="10"
-            r="5"
+            r="1"
             className={'circle'}
           />
 
@@ -605,10 +592,6 @@ RectHandling.defaultProps = {
   value: [],
   onAddSelection: f => f,
   onRemoveSelection: f => f,
-  onRectHover: f => f,
-  onRectHoverOut: f => f,
-  onDiscardSelection: f => f,
-  coordinates: { x: 0, y: 0, height: 0, width: 0 },
 };
 
 RectHandling.propTypes = {
@@ -618,10 +601,6 @@ RectHandling.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   })),
-  coordinates: PropTypes.object,
   onAddSelection: PropTypes.func,
   onRemoveSelection: PropTypes.func,
-  onDiscardSelection: PropTypes.func,
-  onRectHover: PropTypes.func,
-  onRectHoverOut: PropTypes.func,
 };
